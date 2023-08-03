@@ -1,0 +1,49 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/humble/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_amcl/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_behavior_tree/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_behaviors/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_bt_navigator/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_collision_monitor/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_constrained_smoother/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_controller/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_core/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_costmap_2d/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_dwb_controller/costmap_queue/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_dwb_controller/dwb_core/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_dwb_controller/dwb_critics/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_dwb_controller/dwb_plugins/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_dwb_controller/nav_2d_utils/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_lifecycle_manager/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_map_server/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_mppi_controller/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_navfn_planner/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_planner/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_regulated_pure_pursuit_controller/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_rotation_shim_controller/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_rviz_plugins/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_smac_planner/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_smoother/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_theta_star_planner/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_util/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_velocity_smoother/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_voxel_grid/include/**",
+        "/Files/Programs/ROS2/Humble/nav2/src/nav2_waypoint_follower/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
