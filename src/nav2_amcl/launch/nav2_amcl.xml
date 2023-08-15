@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="nav2_amcl" exec="amcl" name="nav2_amcl"
+    launch-prefix="gdbserver 127.0.0.1:3000"/>
+</launch>
