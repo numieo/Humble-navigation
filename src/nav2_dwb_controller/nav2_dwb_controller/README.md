@@ -1,0 +1,1 @@
+nav2_dwb_controller 是整个导航控制器的包装器，它集成了 costmap_queue、dwb_core、dwb_critics、dwb_plugins 等功能，实现基于代价地图的动态窗口控制方法。它将路径规划和控制结合在一起，使机器人能够在实时环境中执行路径规划和控制操作
