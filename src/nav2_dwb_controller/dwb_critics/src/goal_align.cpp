@@ -57,6 +57,17 @@ void GoalAlignCritic::onInit()
     dwb_plugin_name_ + "." + name_ + ".forward_point_distance", 0.325);
 }
 
+/**
+ * @brief 为评估准备数据,目标是计算出机器人在全局路径上的某一点，使得当前位置指向该点的直线方向相一致，
+ * 而不是路径的最后一点。这是为了避免在机器人需要在最后一点进行180度转弯时出现不稳定性
+ * 
+ * @param pose 当前机器人位姿
+ * @param vel 速度
+ * @param goal 目标位姿
+ * @param global_plan 全局路径
+ * @return true 
+ * @return false 
+ */
 bool GoalAlignCritic::prepare(
   const geometry_msgs::msg::Pose2D & pose, const nav_2d_msgs::msg::Twist2D & vel,
   const geometry_msgs::msg::Pose2D & goal,
@@ -67,17 +78,20 @@ bool GoalAlignCritic::prepare(
   // path for the robot center. Choosing the final position after
   // turning towards goal orientation causes instability when the
   // robot needs to make a 180 degree turn at the end
-  double angle_to_goal = atan2(goal.y - pose.y, goal.x - pose.x);
 
+  // 计算当前机器人位姿到目标位姿的方向角 angle_to_goal
+  double angle_to_goal = atan2(goal.y - pose.y, goal.x - pose.x);
+  // 将 target_poses 的最后一个点沿着 angle_to_goal 方向延伸一定距离 forward_point_distance_，从而得到机器人的预期最终位置
   nav_2d_msgs::msg::Path2D target_poses = global_plan;
   target_poses.poses.back().x += forward_point_distance_ * cos(angle_to_goal);
   target_poses.poses.back().y += forward_point_distance_ * sin(angle_to_goal);
-
+  // 调用基类 GoalDistCritic 的 prepare 函数，以计算机器人在目标对齐后的位置上的路径规划评分
   return GoalDistCritic::prepare(pose, vel, goal, target_poses);
 }
-
+// 评估给定位姿的得分
 double GoalAlignCritic::scorePose(const geometry_msgs::msg::Pose2D & pose)
 {
+  // 评估机器人在预期的目标对齐位置上的路径规划得分
   return GoalDistCritic::scorePose(getForwardPose(pose, forward_point_distance_));
 }
 

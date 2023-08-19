@@ -73,15 +73,20 @@ void PreferForwardCritic::onInit()
 double PreferForwardCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D & traj)
 {
   // backward motions bad on a robot without backward sensors
+  // 是否进行了后退运动。如果是后退运动，就返回预设的 penalty_（罚分），表示在没有后向传感器的机器人上，后退运动是不利的
   if (traj.velocity.x < 0.0) {
     return penalty_;
   }
   // strafing motions also bad on such a robot
+// 判断是否出现了横向（侧移）运动。如果出现了横向运动，同样返回预设的 penalty_，表示对于没有后向传感器的机器人，横向运动也是不利的
   if (traj.velocity.x < strafe_x_ && fabs(traj.velocity.theta) < strafe_theta_) {
     return penalty_;
   }
 
   // the more we rotate, the less we progress forward
+// 如果以上两个条件都没有满足，就说明轨迹中的运动是前进运动。在这种情况下，
+// 评价器将轨迹中的角速度 traj.velocity.theta 的绝对值乘以预设的 theta_scale_，
+// 作为评分返回。这个操作的目的是：角速度越大，表示机器人的旋转越多，对前进的帮助越小，因此评分越低
   return fabs(traj.velocity.theta) * theta_scale_;
 }
 

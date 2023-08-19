@@ -42,10 +42,16 @@ namespace dwb_critics
 {
 geometry_msgs::msg::Pose2D getForwardPose(const geometry_msgs::msg::Pose2D & pose, double distance)
 {
+  // 存储前进后的姿态信息
   geometry_msgs::msg::Pose2D forward_pose;
+  // 新位置的 x 坐标是 pose.x 加上前进距离乘以 cos(pose.theta)，表示沿着当前朝向的 x 方向移动
   forward_pose.x = pose.x + distance * cos(pose.theta);
+  // 新位置的 y 坐标是 pose.y 加上前进距离乘以 sin(pose.theta)，表示沿着当前朝向的 y 方向移动
   forward_pose.y = pose.y + distance * sin(pose.theta);
+  
+  // 前进后的朝向保持不变
   forward_pose.theta = pose.theta;
+  // 前进后的姿态
   return forward_pose;
 }
 }  // namespace dwb_critics
